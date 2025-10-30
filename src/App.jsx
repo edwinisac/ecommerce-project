@@ -3,14 +3,14 @@ import { useEffect,useState } from 'react'
 import axios from 'axios'
 
 
-import { HomePage } from './pages/HomePage'
+import { HomePage } from './pages/home/HomePage'
 import { CheckoutPage } from './pages/checkout/CheckoutPage'
-import { OrdersPage } from './pages/OrdersPage'
-import { PageNotFound } from './pages/PageNotFound'
+import { OrdersPage } from './pages/orders/OrdersPage'
+import { PageNotFound } from './pages/page_not_found/PageNotFound'
+import { TrackingPage } from './pages/tracking/TrackingPage'
 
 
 import './App.css'
-import { TrackingPage } from './pages/TrackingPage'
 
 function App() {
   const [cart,setCart]=useState([]);
@@ -29,7 +29,7 @@ function App() {
           <Route index element={<HomePage cart={cart}/>}/>
           <Route path="checkout" element={<CheckoutPage cart={cart}/>}/>
           <Route path="orders" element={<OrdersPage cart={cart}/>}/>
-          <Route path="tracking" element={<TrackingPage/>}/>
+          <Route path="tracking" element={<TrackingPage cart={cart}/>}/>
           <Route path="*" element={<PageNotFound/>}/>
       </Routes>
 
