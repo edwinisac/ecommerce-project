@@ -26,10 +26,15 @@ export function CheckoutPage({ cart }) {
 
   useEffect(()=>{
     const getCheckoutData=async()=>{
-      let response=await axios .get("/api/delivery-options?expand=estimatedDeliveryTime")
-      setDeliveryOptions(response.data);
-      response=await axios .get("/api/payment-summary")
-      setPaymentSummary(response.data);
+      try{
+        let response=await axios .get("/api/delivery-options?expand=estimatedDeliveryTime")
+        setDeliveryOptions(response.data);
+        response=await axios .get("/api/payment-summary")
+        setPaymentSummary(response.data);
+      }
+      catch(error){
+        console.error("Error fetching checkout data : ",error)
+      }
     }
   getCheckoutData();
 
@@ -40,7 +45,7 @@ export function CheckoutPage({ cart }) {
       <link rel="icon" type="image/svg+xml" href="favicons/cart.png" />
 
       <title>Checkout</title>
-      <CheckoutHeader />
+      <CheckoutHeader cart={cart} />
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
