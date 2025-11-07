@@ -1,11 +1,11 @@
 import { OrdersGrid } from "./OrdersGrid";
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
 import "./OrdersPage.css";
 
-export function OrdersPage({ cart }) {
+export function OrdersPage({ cart, loadCart }) {
   const [orders, setOrders] = useState([]);
 
   // useEffect(() => {
@@ -31,7 +31,7 @@ export function OrdersPage({ cart }) {
       <Header cart={cart} />
 
 
-        <OrdersGrid orders={orders}/>
+        <OrdersGrid orders={orders} loadCart={loadCart}/>
 
      
     </>
