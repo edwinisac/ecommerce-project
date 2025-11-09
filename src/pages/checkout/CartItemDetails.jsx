@@ -31,14 +31,6 @@ export function CartItemDetails({ cartItem, loadCart }) {
     }
   };
 
-  const changeQuantityKeyPress=(e)=>{
-    if(e.key==="Enter"){
-      updateQuantity();
-    }
-    else if(e.key==="Escape"){
-      setUpdate(false);
-    }
-  }
 
   return (
     <>
@@ -58,7 +50,14 @@ export function CartItemDetails({ cartItem, loadCart }) {
                 className="textbox"
                 value={quantity}
                 onChange={changeQuantity}
-                onKeyDown={changeQuantityKeyPress}
+                onKeyDown={(e)=>{
+                  if(e.key==="Enter"){
+                    updateQuantity();
+                  }
+                  else if(e.key==="Escape"){
+                    setUpdate(false);
+                  }
+                }}
               />
             ) : (
               <span className="quantity-label">{cartItem.quantity}</span>
